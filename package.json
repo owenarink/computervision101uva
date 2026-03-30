@@ -13,6 +13,9 @@
   },
   "scripts": {
     "quartz": "./quartz/bootstrap-cli.mjs",
+    "sync:cv": "zsh scripts/sync-cv-content.sh",
+    "build:cv": "zsh scripts/sync-cv-content.sh && node ./quartz/bootstrap-cli.mjs build",
+    "serve:cv": "zsh scripts/sync-cv-content.sh && node ./quartz/bootstrap-cli.mjs build --serve --port 8080",
     "docs": "npx quartz build --serve -d docs",
     "check": "tsc --noEmit && npx prettier . --check",
     "format": "npx prettier . --write",
