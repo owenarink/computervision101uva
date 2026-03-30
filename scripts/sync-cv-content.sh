@@ -1,10 +1,10 @@
-#!/bin/zsh
+#!/usr/bin/env bash
 
 set -euo pipefail
 
-SCRIPT_DIR="${0:A:h}"
-SITE_ROOT="${SCRIPT_DIR:h}"
-VAULT_ROOT="${SITE_ROOT:h:h}"
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+SITE_ROOT="$(cd -- "${SCRIPT_DIR}/.." && pwd)"
+VAULT_ROOT="$(cd -- "${SITE_ROOT}/../.." && pwd)"
 DEST_DIR="${SITE_ROOT}/content/computer-vision"
 
 mkdir -p "${DEST_DIR}"
