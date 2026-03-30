@@ -26,8 +26,6 @@ jobs:
           node-version: 22
       - name: Install dependencies
         run: npm ci
-      - name: Sync Computer Vision content
-        run: npm run sync:cv
       - name: Build Quartz
         run: node ./quartz/bootstrap-cli.mjs build
       - name: Upload artifact
