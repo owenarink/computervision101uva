@@ -19,7 +19,9 @@ export default (() => {
 
   ThemeSwitcher.afterDOMLoaded = `
     const themeStorageKey = "cv-theme"
-    const themeLinkId = "cv-theme-stylesheet"
+    const themeLinkId = "cv-dracula-theme-stylesheet"
+    const defaultTheme = "material-gruvbox"
+    const altTheme = "minimal-dracula"
 
     const getBasePath = () => {
       const cssLink = document.querySelector('link[href$="index.css"]')
@@ -28,9 +30,9 @@ export default (() => {
       return href.replace(/index\\.css$/, "")
     }
 
-    const themeHref = (themeName) => \`\${getBasePath()}static/themes/\${themeName}.css\`
+    const draculaHref = () => \`\${getBasePath()}static/themes/\${altTheme}.css\`
 
-    const ensureThemeLink = () => {
+    const ensureDraculaLink = () => {
       let link = document.getElementById(themeLinkId)
       if (!link) {
         link = document.createElement("link")
@@ -44,8 +46,14 @@ export default (() => {
     }
 
     const applyTheme = (themeName) => {
-      const link = ensureThemeLink()
-      link.setAttribute("href", themeHref(themeName))
+      const existingLink = document.getElementById(themeLinkId)
+      if (themeName === altTheme) {
+        const link = ensureDraculaLink()
+        link.setAttribute("href", draculaHref())
+      } else if (existingLink) {
+        existingLink.remove()
+      }
+
       localStorage.setItem(themeStorageKey, themeName)
       document.querySelectorAll(".cv-theme-switcher__menu button").forEach((button) => {
         button.classList.toggle("active", button.dataset.themeName === themeName)
@@ -53,7 +61,7 @@ export default (() => {
     }
 
     const syncTheme = () => {
-      const savedTheme = localStorage.getItem(themeStorageKey) || "material-gruvbox"
+      const savedTheme = localStorage.getItem(themeStorageKey) || defaultTheme
       applyTheme(savedTheme)
     }
 
@@ -72,7 +80,7 @@ export default (() => {
         }
 
         if (option) {
-          applyTheme(option.dataset.themeName || "material-gruvbox")
+          applyTheme(option.dataset.themeName || defaultTheme)
           root.classList.remove("open")
           return
         }

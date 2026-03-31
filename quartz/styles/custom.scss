@@ -1,4 +1,5 @@
 @use "./base.scss";
+@use "./themes";
 
 .cv-theme-switcher {
   position: fixed;
@@ -24,6 +25,7 @@
 .cv-theme-switcher__toggle {
   padding: 0.65rem 0.9rem;
   cursor: pointer;
+  font-weight: 600;
 }
 
 .cv-theme-switcher__menu {
