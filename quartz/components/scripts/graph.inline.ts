@@ -195,19 +195,14 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
 
   // calculate color
   const color = (d: NodeData) => {
-    const palette = [
-      "#ff006e",
-      "#fb5607",
-      "#ffbe0b",
-      "#8338ec",
-      "#3a86ff",
-      "#00b4d8",
-      "#2ec4b6",
-      "#06d6a0",
-    ]
-    const hash = [...d.id].reduce((acc, ch) => acc + ch.charCodeAt(0), 0)
-    const hashedColor = palette[hash % palette.length]
-    return hashedColor
+    const isCurrent = d.id === slug
+    if (isCurrent) {
+      return computedStyleMap["--secondary"]
+    } else if (visited.has(d.id) || d.id.startsWith("tags/")) {
+      return computedStyleMap["--tertiary"]
+    } else {
+      return computedStyleMap["--gray"]
+    }
   }
 
   function nodeRadius(d: NodeData) {
