@@ -1,11 +1,12 @@
 import { PageLayout, SharedLayout } from "./quartz/cfg"
 import * as Component from "./quartz/components"
+import ThemeSwitcher from "./quartz/components/ThemeSwitcher"
 
 // components shared across all pages
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
   header: [],
-  afterBody: [],
+  afterBody: [ThemeSwitcher()],
   footer: Component.Footer({
     links: {
       GitHub: "https://github.com/jackyzha0/quartz",
