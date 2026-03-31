@@ -1,13 +1,13 @@
 import { PageLayout, SharedLayout } from "./quartz/cfg"
 import * as Component from "./quartz/components"
 import CreditsFooter from "./quartz/components/CreditsFooter"
-import PageTransitions from "./quartz/components/PageTransitions"
+import ThemePresetSwitcher from "./quartz/components/ThemePresetSwitcher"
 
 // components shared across all pages
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
   header: [],
-  afterBody: [PageTransitions()],
+  afterBody: [ThemePresetSwitcher()],
   footer: CreditsFooter(),
 }
 
