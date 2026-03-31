@@ -48,6 +48,11 @@ h4 {
   letter-spacing: -0.02em;
 }
 
+.center article > p:first-of-type {
+  font-size: 1.08rem;
+  color: var(--darkgray);
+}
+
 a.internal {
   text-decoration-thickness: 0.12em;
   text-underline-offset: 0.16em;
@@ -75,10 +80,26 @@ a.internal {
   color: var(--secondary);
   list-style: none;
   font-weight: 600;
+  transition: color 180ms ease, transform 180ms ease;
 }
 
 .credits-disclosure summary::-webkit-details-marker {
   display: none;
+}
+
+.credits-disclosure summary::after {
+  content: " +";
+  display: inline-block;
+  margin-left: 0.35rem;
+  transition: transform 220ms ease;
+}
+
+.credits-disclosure[open] summary::after {
+  transform: rotate(45deg);
+}
+
+.credits-disclosure:hover summary {
+  color: var(--tertiary);
 }
 
 .credits-disclosure ul {
@@ -86,9 +107,107 @@ a.internal {
   padding-left: 1.1rem;
 }
 
+.credits-disclosure > *:not(summary) {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 240ms ease, opacity 240ms ease;
+  opacity: 0;
+}
+
+.credits-disclosure[open] > *:not(summary) {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+.credits-disclosure > *:not(summary) > * {
+  overflow: hidden;
+}
+
 .graph .graph-container canvas,
 .graph .global-graph-container canvas {
   filter: saturate(1.18) contrast(1.02);
+}
+
+.graph {
+  border: var(--retroma-border);
+  border-radius: 20px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.34), rgba(255, 255, 255, 0.04));
+  padding: 0.9rem;
+}
+
+.graph > h3 {
+  margin-bottom: 0.35rem;
+}
+
+.graph > .graph-outer {
+  border-radius: 16px !important;
+  border: 1px solid color-mix(in srgb, var(--secondary) 30%, var(--lightgray)) !important;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255, 122, 24, 0.09), transparent 26%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0.08));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.graph > .global-graph-outer > .global-graph-container {
+  border-radius: 22px !important;
+  border: var(--retroma-border) !important;
+  box-shadow: var(--retroma-shadow);
+}
+
+.explorer {
+  border: var(--retroma-border);
+  border-radius: 20px;
+  padding: 0.9rem 0.85rem 0.95rem;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.42), rgba(255, 255, 255, 0.16)),
+    repeating-linear-gradient(
+      180deg,
+      transparent 0,
+      transparent 26px,
+      rgba(217, 79, 4, 0.03) 27px,
+      rgba(217, 79, 4, 0.03) 28px
+    );
+}
+
+.explorer > button.desktop-explorer,
+.explorer > button.mobile-explorer {
+  margin-bottom: 0.45rem;
+}
+
+.explorer-content .folder-container,
+.explorer-content li > a {
+  border-radius: 12px;
+}
+
+.explorer-content .folder-container {
+  margin: 0.15rem 0;
+  padding: 0.12rem 0.35rem 0.12rem 0.15rem;
+  background: rgba(255, 255, 255, 0.38);
+}
+
+.explorer-content .folder-outer > ul {
+  margin-top: 0.2rem;
+  margin-left: 10px;
+  padding-left: 0.9rem;
+  border-left: 2px solid color-mix(in srgb, var(--secondary) 22%, var(--lightgray));
+}
+
+.explorer-content ul li > a {
+  display: block;
+  margin: 0.1rem 0;
+  padding: 0.3rem 0.5rem;
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.explorer-content ul li > a:hover,
+.explorer-content .folder-container:hover {
+  background: rgba(255, 122, 24, 0.12);
+}
+
+.folder-container div > button span,
+.folder-container div > a {
+  letter-spacing: 0.01em;
+  text-transform: none;
 }
 
 .center.page-roll-enter {

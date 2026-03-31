@@ -42,9 +42,13 @@ export const defaultContentPageLayout: PageLayout = {
       localGraph: {
         depth: 2,
         scale: 1.15,
+        showTags: false,
+        removeTags: ["university", "computervision", "theory", "lectures", "assignments", "week1"],
       },
       globalGraph: {
         scale: 1,
+        showTags: false,
+        removeTags: ["university", "computervision", "theory", "lectures", "assignments", "week1"],
       },
     }),
     Component.DesktopOnly(Component.TableOfContents()),
