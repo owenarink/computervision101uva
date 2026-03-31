@@ -4,30 +4,40 @@ export default (() => {
   const PageTransitions: QuartzComponent = () => null
 
   PageTransitions.afterDOMLoaded = `
-    const selectors = [".breadcrumb-container", ".article-title", ".center article"]
+    const breadcrumbSelectors = [".breadcrumb-container"]
+    const noteSelectors = [".article-title", ".center article"]
 
-    const forEachTarget = (fn) => {
+    const forEachTarget = (selectors, fn) => {
       selectors.forEach((selector) => {
         document.querySelectorAll(selector).forEach((el) => fn(el))
       })
     }
 
     const clearClasses = (el) => {
-      el.classList.remove("page-roll-enter", "page-roll-exit")
+      el.classList.remove("note-roll-enter", "note-roll-exit", "crumb-fade-enter", "crumb-fade-exit")
     }
 
     const applyPageReveal = () => {
-      forEachTarget((el) => {
+      forEachTarget(breadcrumbSelectors, (el) => {
         clearClasses(el)
         void el.offsetWidth
-        el.classList.add("page-roll-enter")
+        el.classList.add("crumb-fade-enter")
+      })
+      forEachTarget(noteSelectors, (el) => {
+        clearClasses(el)
+        void el.offsetWidth
+        el.classList.add("note-roll-enter")
       })
     }
 
     const applyPageExit = () => {
-      forEachTarget((el) => {
+      forEachTarget(breadcrumbSelectors, (el) => {
         clearClasses(el)
-        el.classList.add("page-roll-exit")
+        el.classList.add("crumb-fade-exit")
+      })
+      forEachTarget(noteSelectors, (el) => {
+        clearClasses(el)
+        el.classList.add("note-roll-exit")
       })
     }
 
