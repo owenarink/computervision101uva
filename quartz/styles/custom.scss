@@ -215,6 +215,39 @@ a.internal {
   transform-origin: top center;
 }
 
+.breadcrumb-container,
+.article-title,
+.center article {
+  will-change: transform, opacity, filter;
+}
+
+.breadcrumb-container {
+  position: relative;
+  overflow: clip;
+  padding-bottom: 0.18rem;
+}
+
+.breadcrumb-container::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 18px;
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent 0%, color-mix(in srgb, var(--light) 72%, transparent) 100%);
+}
+
+.breadcrumb-container.page-roll-enter,
+.article-title.page-roll-enter,
+.center article.page-roll-enter {
+  animation: pageTextEnter 340ms cubic-bezier(0.2, 0.9, 0.2, 1);
+}
+
+.breadcrumb-container.page-roll-exit,
+.article-title.page-roll-exit,
+.center article.page-roll-exit {
+  animation: pageTextExit 180ms cubic-bezier(0.4, 0, 1, 1);
+}
+
 @keyframes pageRollEnter {
   0% {
     opacity: 0;
@@ -224,5 +257,33 @@ a.internal {
   100% {
     opacity: 1;
     transform: translateY(0) rotateX(0);
+  }
+}
+
+@keyframes pageTextEnter {
+  0% {
+    opacity: 0;
+    transform: translateY(16px);
+    filter: blur(4px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes pageTextExit {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-10px);
+    filter: blur(4px);
   }
 }
