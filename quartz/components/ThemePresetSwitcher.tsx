@@ -16,40 +16,49 @@ export default (() => {
 
   ThemePresetSwitcher.afterDOMLoaded = `
     const storageKey = "theme-preset"
+    const root = document.documentElement
 
     const applyPreset = (preset) => {
-      document.documentElement.setAttribute("data-theme-preset", preset)
+      root.setAttribute("data-theme-preset", preset)
       localStorage.setItem(storageKey, preset)
       document.querySelectorAll(".theme-preset-options button").forEach((button) => {
         button.classList.toggle("active", button.dataset.themePreset === preset)
       })
     }
 
-    const setupThemeSwitcher = () => {
-      const switcher = document.querySelector(".theme-preset-switcher")
-      const toggle = document.querySelector(".theme-preset-toggle")
-      const buttons = document.querySelectorAll(".theme-preset-options button")
-      if (!switcher || !toggle || buttons.length === 0) return
-
+    const syncSwitcher = () => {
       const savedPreset = localStorage.getItem(storageKey) ?? "material-gruvbox"
       applyPreset(savedPreset)
+    }
 
-      const onToggle = () => switcher.classList.toggle("open")
-      toggle.addEventListener("click", onToggle)
-      window.addCleanup(() => toggle.removeEventListener("click", onToggle))
+    if (!window.__themePresetInit) {
+      window.__themePresetInit = true
 
-      buttons.forEach((button) => {
-        const onClick = () => {
-          applyPreset(button.dataset.themePreset || "material-gruvbox")
+      document.addEventListener("click", (event) => {
+        const toggle = event.target.closest(".theme-preset-toggle")
+        const option = event.target.closest(".theme-preset-options button")
+        const switcher = document.querySelector(".theme-preset-switcher")
+        if (!switcher) return
+
+        if (toggle) {
+          switcher.classList.toggle("open")
+          return
+        }
+
+        if (option) {
+          applyPreset(option.dataset.themePreset || "material-gruvbox")
+          switcher.classList.remove("open")
+          return
+        }
+
+        if (!event.target.closest(".theme-preset-switcher")) {
           switcher.classList.remove("open")
         }
-        button.addEventListener("click", onClick)
-        window.addCleanup(() => button.removeEventListener("click", onClick))
       })
     }
 
-    document.addEventListener("nav", setupThemeSwitcher)
-    setupThemeSwitcher()
+    document.addEventListener("nav", syncSwitcher)
+    syncSwitcher()
   `
 
   return ThemePresetSwitcher
