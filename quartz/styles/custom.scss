@@ -278,28 +278,28 @@ a.internal {
   color: var(--light);
 }
 
-html[data-theme-preset="retroma"] .page > #quartz-body .sidebar,
-html[data-theme-preset="retroma"] .page > #quartz-body .center,
-html[data-theme-preset="retroma"] .page > #quartz-body footer {
+html[data-theme-preset="material-gruvbox"] .page > #quartz-body .sidebar,
+html[data-theme-preset="material-gruvbox"] .page > #quartz-body .center,
+html[data-theme-preset="material-gruvbox"] .page > #quartz-body footer {
   box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.22);
 }
 
-html[data-theme-preset="retro-windows"] .page > #quartz-body .sidebar,
-html[data-theme-preset="retro-windows"] .page > #quartz-body .center,
-html[data-theme-preset="retro-windows"] .page > #quartz-body footer,
-html[data-theme-preset="retro-windows"] .theme-preset-toggle,
-html[data-theme-preset="retro-windows"] .theme-preset-options button {
+html[data-theme-preset="nightfox"] .page > #quartz-body .sidebar,
+html[data-theme-preset="nightfox"] .page > #quartz-body .center,
+html[data-theme-preset="nightfox"] .page > #quartz-body footer,
+html[data-theme-preset="nightfox"] .theme-preset-toggle,
+html[data-theme-preset="nightfox"] .theme-preset-options button {
   box-shadow: inset -2px -2px 0 #7d7d7d, inset 2px 2px 0 #ffffff, 3px 3px 0 rgba(0, 0, 0, 0.18);
 }
 
-html[data-theme-preset="retronotes"] .page > #quartz-body .sidebar,
-html[data-theme-preset="retronotes"] .page > #quartz-body .center,
-html[data-theme-preset="retronotes"] .page > #quartz-body footer {
+html[data-theme-preset="minimal-dracula"] .page > #quartz-body .sidebar,
+html[data-theme-preset="minimal-dracula"] .page > #quartz-body .center,
+html[data-theme-preset="minimal-dracula"] .page > #quartz-body footer {
   box-shadow: none;
   border-width: 1px;
 }
 
-html[data-theme-preset="retronotes"] .explorer,
-html[data-theme-preset="retronotes"] .graph {
+html[data-theme-preset="minimal-dracula"] .explorer,
+html[data-theme-preset="minimal-dracula"] .graph {
   border-width: 1px;
 }

@@ -7,9 +7,9 @@ export default (() => {
         Themes
       </button>
       <div class="theme-preset-options">
-        <button data-theme-preset="retroma">Retroma</button>
-        <button data-theme-preset="retro-windows">Retro Windows</button>
-        <button data-theme-preset="retronotes">Retronotes</button>
+        <button data-theme-preset="material-gruvbox">Material Gruvbox</button>
+        <button data-theme-preset="nightfox">Nightfox</button>
+        <button data-theme-preset="minimal-dracula">Minimal Dracula</button>
       </div>
     </div>
   )
@@ -31,7 +31,7 @@ export default (() => {
       const buttons = document.querySelectorAll(".theme-preset-options button")
       if (!switcher || !toggle || buttons.length === 0) return
 
-      const savedPreset = localStorage.getItem(storageKey) ?? "retroma"
+      const savedPreset = localStorage.getItem(storageKey) ?? "material-gruvbox"
       applyPreset(savedPreset)
 
       const onToggle = () => switcher.classList.toggle("open")
@@ -40,7 +40,7 @@ export default (() => {
 
       buttons.forEach((button) => {
         const onClick = () => {
-          applyPreset(button.dataset.themePreset || "retroma")
+          applyPreset(button.dataset.themePreset || "material-gruvbox")
           switcher.classList.remove("open")
         }
         button.addEventListener("click", onClick)
