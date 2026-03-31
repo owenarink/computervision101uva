@@ -196,12 +196,17 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
   // calculate color
   const color = (d: NodeData) => {
     const isCurrent = d.id === slug
+    const palette = ["#ff7a18", "#f43f5e", "#8b5cf6", "#06b6d4", "#14b8a6", "#eab308"]
+    const hash = [...d.id].reduce((acc, ch) => acc + ch.charCodeAt(0), 0)
+    const hashedColor = palette[hash % palette.length]
     if (isCurrent) {
       return computedStyleMap["--secondary"]
-    } else if (visited.has(d.id) || d.id.startsWith("tags/")) {
+    } else if (d.id.startsWith("tags/")) {
+      return hashedColor
+    } else if (visited.has(d.id)) {
       return computedStyleMap["--tertiary"]
     } else {
-      return computedStyleMap["--gray"]
+      return hashedColor
     }
   }
 

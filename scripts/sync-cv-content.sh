@@ -31,16 +31,9 @@ files=(
   "ComputerVision101_Theory.md"
   "CV101_Lectures.md"
   "CV101_LectureNotes.md"
-  "CV101_LectureNotesRemarkableFiles.md"
-  "CV101_LectureNotes1a.md"
   "CV101_Assignments.md"
   "CV101_F1.md"
-  "CV101_Making_Groups_for_the_weekly_assignments.md"
-  "CV101_preparation_for_assignments.md"
-  "CV101_theory_questions_week1_interpolation_and_histograms.md"
-  "CV101_python_assignment_1_equalization_and_Interpolation.md"
   "CV101_RvdBoomgaard_LectureNotes.md"
-  "CV101_Lecture1a.pdf"
   "ICV_2026_HC0a_kickoff.pdf"
   "ICV_2026_HC1a_Images_Interpol.pdf"
   "ICV_2026_HC1a_Images_Interpol 1.pdf"
@@ -56,5 +49,55 @@ files=(
 for file in "${files[@]}"; do
   cp "${VAULT_ROOT}/${file}" "${DEST_DIR}/${file}"
 done
+
+python3 - <<'PY'
+from pathlib import Path
+
+dest = Path(r"/Users/owenarink/Documents/Obsidian Vault/06. Coding Projects/cv-quartz/content/computer-vision")
+
+index_path = dest / "Computer Vision Index.md"
+index_path.write_text(
+    """#university #math #computervision #programming
+# Theory
+[[ComputerVision101_Theory]]
+
+# Lecture notes
+https://rvdboomgaard.github.io/ComputerVision_LectureNotes/LectureNotes/IP/index.html
+
+# Lectures
+[[CV101_Lectures]]
+[[CV101_LectureNotes]]
+
+# Assignments
+[[CV101_Assignments]]
+""",
+    encoding="utf-8",
+)
+
+lecture_notes_path = dest / "CV101_LectureNotes.md"
+lecture_notes_path.write_text(
+    """#university #computervision #lectures
+
+The handwritten lecture-note files are kept in the private Obsidian vault.
+
+Use these public notes instead:
+
+- [[ComputerVision101_Theory_Week1]]
+- [[CV101_Lectures]]
+""",
+    encoding="utf-8",
+)
+
+week1_path = dest / "ComputerVision101_Theory_Week1.md"
+text = week1_path.read_text(encoding="utf-8")
+text = text.replace(
+    """Digitized lecture notes:
+[[CV101_LectureNotes1a]]
+
+""",
+    "",
+)
+week1_path.write_text(text, encoding="utf-8")
+PY
 
 echo "Synced ${#files[@]} Computer Vision files to ${DEST_DIR}"

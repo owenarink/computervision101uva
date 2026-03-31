@@ -6,9 +6,6 @@ https://rvdboomgaard.github.io/ComputerVision_LectureNotes/LectureNotes/IP/index
 Lecture slides:
 ![[ICV_2026_HC1a_Images_Interpol.pdf]]
 
-Digitized lecture notes:
-[[CV101_LectureNotes1a]]
-
 Concepts:
 
 [[ComputerVision101_Week1_WhatIsAnImage]]

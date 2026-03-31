@@ -1,3 +1,109 @@
 @use "./base.scss";
 
-// put your custom CSS here!
+:root {
+  --retroma-shadow: 0 18px 40px rgba(85, 42, 9, 0.14);
+  --retroma-border: 1px solid color-mix(in srgb, var(--secondary) 28%, var(--lightgray));
+}
+
+body {
+  background:
+    radial-gradient(circle at top left, rgba(255, 179, 71, 0.22), transparent 28%),
+    radial-gradient(circle at top right, rgba(14, 165, 164, 0.14), transparent 24%),
+    linear-gradient(180deg, var(--light) 0%, #fffaf0 100%);
+}
+
+[saved-theme="dark"] body {
+  background:
+    radial-gradient(circle at top left, rgba(255, 122, 24, 0.16), transparent 26%),
+    radial-gradient(circle at top right, rgba(86, 215, 210, 0.11), transparent 22%),
+    linear-gradient(180deg, #130d08 0%, var(--light) 100%);
+}
+
+.page > #quartz-body .sidebar,
+.page > #quartz-body .center,
+.page > #quartz-body .page-header,
+.page > #quartz-body footer {
+  border: var(--retroma-border);
+  border-radius: 22px;
+  box-shadow: var(--retroma-shadow);
+}
+
+.page > #quartz-body .sidebar,
+.page > #quartz-body .center,
+.page > #quartz-body footer {
+  background: color-mix(in srgb, var(--light) 92%, white);
+}
+
+[saved-theme="dark"] .page > #quartz-body .sidebar,
+[saved-theme="dark"] .page > #quartz-body .center,
+[saved-theme="dark"] .page > #quartz-body footer {
+  background: color-mix(in srgb, var(--light) 94%, black);
+}
+
+.page-title,
+h1,
+h2,
+h3,
+h4 {
+  letter-spacing: -0.02em;
+}
+
+a.internal {
+  text-decoration-thickness: 0.12em;
+  text-underline-offset: 0.16em;
+}
+
+.center article {
+  line-height: 1.72;
+}
+
+.credits-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 1rem 1.2rem;
+}
+
+.credits-footer p {
+  margin: 0;
+  font-weight: 600;
+}
+
+.credits-disclosure summary {
+  cursor: pointer;
+  color: var(--secondary);
+  list-style: none;
+  font-weight: 600;
+}
+
+.credits-disclosure summary::-webkit-details-marker {
+  display: none;
+}
+
+.credits-disclosure ul {
+  margin: 0.6rem 0 0;
+  padding-left: 1.1rem;
+}
+
+.graph .graph-container canvas,
+.graph .global-graph-container canvas {
+  filter: saturate(1.18) contrast(1.02);
+}
+
+.center.page-roll-enter {
+  animation: pageRollEnter 360ms cubic-bezier(0.2, 0.9, 0.2, 1);
+  transform-origin: top center;
+}
+
+@keyframes pageRollEnter {
+  0% {
+    opacity: 0;
+    transform: translateY(18px) rotateX(-8deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+  }
+}

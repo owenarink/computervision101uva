@@ -2,7 +2,7 @@
 title: Computer Vision Notes
 ---
 
-This Quartz site publishes the Computer Vision notes from the Obsidian vault.
+Computer Vision Notes maintained by Owen Arink (University of Amsterdam).
 
 Start here:
 
