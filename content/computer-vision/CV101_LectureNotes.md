@@ -1,8 +1,7 @@
 #university #computervision #lectures
 
-The handwritten lecture-note files are kept in the private Obsidian vault.
+Public lecture-note pages:
 
-Use these public notes instead:
-
+- [[CV101_LectureNotes1b]]
 - [[ComputerVision101_Theory_Week1]]
 - [[CV101_Lectures]]

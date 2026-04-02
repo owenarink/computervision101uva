@@ -28,15 +28,28 @@ files=(
   "ComputerVision101_Week1_Histograms.md"
   "ComputerVision101_Week1_NyquistShannonSamplingTheorem.md"
   "ComputerVision101_Week1_LocalOperators.md"
+  "ComputerVision101_Week1_CubicInterpolation.md"
+  "ComputerVision101_Week1_Extrapolation.md"
+  "ComputerVision101_Week1_ImageRepresentation_NumPyOpenCV.md"
+  "ComputerVision101_Week1_DomainIterators.md"
+  "ComputerVision101_Week1_ImageArithmetic.md"
+  "ComputerVision101_Week1_AlphaBlending.md"
+  "ComputerVision101_Week1_UnsharpMasking.md"
+  "ComputerVision101_Week1_Thresholding.md"
+  "ComputerVision101_Week1_HistogramContrastStretching.md"
+  "ComputerVision101_Week1_HistogramEqualization.md"
+  "ComputerVision101_Week1_HistogramThresholding.md"
   "ComputerVision101_Theory.md"
   "CV101_Lectures.md"
   "CV101_LectureNotes.md"
+  "CV101_LectureNotes1b.md"
   "CV101_Assignments.md"
   "CV101_F1.md"
   "CV101_RvdBoomgaard_LectureNotes.md"
   "ICV_2026_HC0a_kickoff.pdf"
   "ICV_2026_HC1a_Images_Interpol.pdf"
   "ICV_2026_HC1a_Images_Interpol 1.pdf"
+  "ICV_2026_HC1b_histograms_PtOperators (1).pdf"
   "ComputerVision101_Week1_WhatIsAnImage_Slide-12.png"
   "ComputerVision101_Week1_Definition_Slide-13.png"
   "ComputerVision101_Week1_Sampling_Slide-22.png"
@@ -78,10 +91,9 @@ lecture_notes_path = dest / "CV101_LectureNotes.md"
 lecture_notes_path.write_text(
     """#university #computervision #lectures
 
-The handwritten lecture-note files are kept in the private Obsidian vault.
+Public lecture-note pages:
 
-Use these public notes instead:
-
+- [[CV101_LectureNotes1b]]
 - [[ComputerVision101_Theory_Week1]]
 - [[CV101_Lectures]]
 """,
@@ -93,9 +105,13 @@ text = week1_path.read_text(encoding="utf-8")
 text = text.replace(
     """Digitized lecture notes:
 [[CV101_LectureNotes1a]]
+[[CV101_LectureNotes1b]]
 
 """,
-    "",
+    """Digitized lecture notes:
+[[CV101_LectureNotes1b]]
+
+""",
 )
 week1_path.write_text(text, encoding="utf-8")
 PY
